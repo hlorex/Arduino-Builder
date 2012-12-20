@@ -13,6 +13,12 @@ signals:
     
 public slots:
     
+private:
+    void createMenu();
+
+    QAction *newAct;
+    QAction *openAct;
+    QMenu *fileMenu;
 };
 
 #endif // MAINWINDOW_H
