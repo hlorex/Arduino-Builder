@@ -12,6 +12,8 @@ public:
 signals:
     
 public slots:
+    void newFile();
+    void openFile();
     
 private:
     void createMenu();
