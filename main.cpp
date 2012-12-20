@@ -1,4 +1,5 @@
 #include <QtGui>
+#include "mainwindow.h"
 
 using namespace std;
 
@@ -6,7 +7,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc,argv);
 
-    QWidget *widget = new QWidget;
+    QWidget *widget = new MainWindow;
 
     widget->show();
 
