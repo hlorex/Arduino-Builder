@@ -4,3 +4,7 @@ SOURCES += main.cpp \
 
 HEADERS += \
     mainwindow.h
+
+contains(QT_VERSION, ^5.*) {
+    QT += widgets
+}
