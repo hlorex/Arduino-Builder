@@ -1,4 +1,3 @@
-#include <QtGlobal>
 #include "common.h"
 #include "mainwindow.h"
 
