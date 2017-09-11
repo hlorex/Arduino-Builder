@@ -4,7 +4,24 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
-    createMenu();
+    //createMenu();
+    createCentralWidget();
+}
+
+void MainWindow::createCentralWidget()
+{
+    QWidget *widget = new QWidget;
+    QVBoxLayout *layout = new QVBoxLayout;
+    runButton = new QPushButton("Build");
+    editProject = new QLineEdit;
+
+    QObject::connect(runButton, SIGNAL(clicked()), this, SLOT(build()));
+
+    layout->addWidget(runButton);
+    layout->addWidget(editProject);
+    widget->setLayout(layout);
+
+    setCentralWidget(widget);
 }
 
 void MainWindow::createMenu()
@@ -33,3 +50,27 @@ void MainWindow::openFile()
 {
     qDebug() << "openFile();";
 }
+
+void MainWindow::build()
+{
+    qDebug() << "build()";
+    QProcess builder;
+
+    builder.setWorkingDirectory(editProject->text());
+    qDebug() << builder.workingDirectory();
+    builder.start("make");
+
+    if (!builder.waitForStarted())
+    {
+        qDebug() << "builder start failed";
+        return;
+    }
+    qDebug() << "build started";
+    if (!builder.waitForFinished())
+    {
+        qDebug() << "builder finish failed";
+        return;
+    }
+    qDebug() << "build finished";
+}
+

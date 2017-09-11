@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
+#include <QLineEdit>
 
 class MainWindow : public QMainWindow
 {
@@ -14,10 +16,14 @@ signals:
 public slots:
     void newFile();
     void openFile();
+    void build();
     
 private:
     void createMenu();
+    void createCentralWidget();
 
+    QPushButton *runButton;
+    QLineEdit *editProject;
     QAction *newAct;
     QAction *openAct;
     QMenu *fileMenu;
